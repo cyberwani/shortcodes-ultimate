@@ -48,6 +48,14 @@ class Shortcodes_Ultimate {
 	private static $instance;
 
 	/**
+	 * Shortcode Generator instance.
+	 *
+	 * @since  5.1.0
+	 * @var    Shortcodes_Ultimate_Generator  Shortcode Generator instance.
+	 */
+	public $generator;
+
+	/**
 	 * Upgrader class instance.
 	 *
 	 * @since  5.1.0
@@ -125,6 +133,11 @@ class Shortcodes_Ultimate {
 		require_once $this->plugin_path . 'admin/class-shortcodes-ultimate-admin-addons.php';
 
 		/**
+		 * The class responsible for Shortcode Generator.
+		 */
+		require_once $this->plugin_path . 'admin/class-shortcodes-ultimate-generator.php';
+
+		/**
 		 * Classes responsible for displaying admin notices.
 		 */
 		require_once $this->plugin_path . 'admin/class-shortcodes-ultimate-notice.php';
@@ -140,6 +153,17 @@ class Shortcodes_Ultimate {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
+
+		/**
+		 * Shortcode Generator.
+		 */
+		$this->generator = new Shortcodes_Ultimate_Generator( $this->plugin_file, $this->plugin_version );
+
+		add_action( 'admin_enqueue_scripts',    array( $this->generator, 'enqueue_scripts' ), 20         );
+		add_filter( 'su/generator/load_assets', array( $this->generator, 'load_assets' )                 );
+		add_action( 'media_buttons',            array( $this->generator, 'insert_shortcode_button' ), 10 );
+		add_action( 'su/widget/media_buttons',  array( $this->generator, 'insert_shortcode_button' ), 10 );
+
 
 		/**
 		 * Upgrades.

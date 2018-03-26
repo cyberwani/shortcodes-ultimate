@@ -47,7 +47,7 @@ class Su_Widget extends WP_Widget {
 					<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
 				</p>
 				<p>
-				<?php Su_Generator::button( array( 'target' => $this->get_field_id( 'content' ) ) ); ?><br/>
+				<?php do_action( 'su/widget/media_buttons', $this->get_field_id( 'content' ) ); ?>
 					<textarea name="<?php echo $this->get_field_name( 'content' ); ?>" id="<?php echo $this->get_field_id( 'content' ); ?>" rows="7" class="widefat" style="margin-top:10px"><?php echo $instance['content']; ?></textarea>
 				</p>
 				<?php

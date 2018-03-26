@@ -88,19 +88,6 @@ class Su_Assets {
 			) );
 		// Cheatsheet
 		wp_register_style( 'su-cheatsheet', plugins_url( 'assets/css/cheatsheet.css', SU_PLUGIN_FILE ), false, SU_PLUGIN_VERSION, 'all' );
-		// Generator
-		wp_register_style( 'su-generator', plugins_url( 'assets/css/generator.css', SU_PLUGIN_FILE ), array( 'farbtastic', 'magnific-popup' ), SU_PLUGIN_VERSION, 'all' );
-		wp_register_script( 'su-generator', plugins_url( 'assets/js/generator.js', SU_PLUGIN_FILE ), array( 'farbtastic', 'magnific-popup', 'qtip' ), SU_PLUGIN_VERSION, true );
-		wp_localize_script( 'su-generator', 'su_generator', array(
-				'upload_title'         => __( 'Choose file', 'shortcodes-ultimate' ),
-				'upload_insert'        => __( 'Insert', 'shortcodes-ultimate' ),
-				'isp_media_title'      => __( 'Select images', 'shortcodes-ultimate' ),
-				'isp_media_insert'     => __( 'Add selected images', 'shortcodes-ultimate' ),
-				'presets_prompt_msg'   => __( 'Please enter a name for new preset', 'shortcodes-ultimate' ),
-				'presets_prompt_value' => __( 'New preset', 'shortcodes-ultimate' ),
-				'last_used'            => __( 'Last used settings', 'shortcodes-ultimate' ),
-				'hotkey'               => get_option( 'su_option_hotkey' )
-			) );
 		// Shortcodes stylesheets
 		wp_register_style( 'su-content-shortcodes', self::skin_url( 'content-shortcodes.css' ), false, SU_PLUGIN_VERSION, 'all' );
 		wp_register_style( 'su-box-shortcodes', self::skin_url( 'box-shortcodes.css' ), false, SU_PLUGIN_VERSION, 'all' );

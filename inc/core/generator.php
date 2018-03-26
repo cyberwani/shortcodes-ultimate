@@ -8,8 +8,6 @@ class Su_Generator {
 	 * Constructor
 	 */
 	function __construct() {
-		add_action( 'media_buttons',                       array( __CLASS__, 'button' ), 1000 );
-
 		add_action( 'su/update',                           array( __CLASS__, 'reset' ) );
 		add_action( 'su/activation',                       array( __CLASS__, 'reset' ) );
 		add_action( 'sunrise/page/before',                 array( __CLASS__, 'reset' ) );
@@ -459,9 +457,3 @@ class Su_Generator {
 }
 
 new Su_Generator;
-
-class Shortcodes_Ultimate_Generator extends Su_Generator {
-	function __construct() {
-		parent::__construct();
-	}
-}
